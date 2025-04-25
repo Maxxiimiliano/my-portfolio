@@ -1,0 +1,145 @@
+// About Me Section - Blue background that stays at the top
+.about {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #f4f7fe;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .about-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #3f51b5;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-content {
+        max-width: 700px;
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #3f51b5;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+// Skills Section - Below the About Me container
+.skills-section {
+    padding: 4rem 2rem;
+    background: #ffffff;
+    text-align: center;
+
+    h3 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #3f51b5;
+    }
+
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+
+        .skill {
+            background-color: #3f51b5;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+
+            i {
+                font-size: 1.5rem;
+            }
+
+            &:hover {
+                background-color: #5c6bc0;
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+
+.studies-certifications {
+    background: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #333;
+
+    .studies-certifications-content {
+        max-width: 1000px;
+        margin: 0 auto;
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #3f51b5;
+        }
+
+        .studies {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .study,
+            .certification {
+                display: flex;
+                background-color: #ffffff;
+                border-radius: 16px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                margin-bottom: 2rem;
+                flex-direction: column;
+                padding: 1.5rem;
+                transition: transform 0.3s;
+
+                &:hover {
+                    transform: translateY(-4px);
+                }
+
+                h3 {
+                    font-size: 1.7rem;
+                    margin-bottom: 1rem;
+                    color: #3f51b5;
+                }
+
+                p {
+                    font-size: 1.1rem;
+                    line-height: 1.6;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about {
+        .about-content {
+            padding: 0 1rem;
+        }
+    }
+
+    .skills-section {
+        .skills {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

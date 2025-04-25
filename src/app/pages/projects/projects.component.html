@@ -1,0 +1,24 @@
+<div class="projects-container" @fadeIn>
+    <h1 class="projects-title">My Projects</h1>
+    <div class="project-card" *ngFor="let project of projects">
+        <div class="project-info">
+            <h2>{{ project.title }}</h2>
+            <p class="description">{{ project.description }}</p>
+            <p class="time-role">
+                <strong>Time Spent:</strong> {{ project.timeSpent }}<br />
+                <strong>Role:</strong> {{ project.role }}
+            </p>
+            <div class="tech-stack">
+                <span *ngFor="let tech of project.technologies" class="tech-chip">
+                    {{ tech }}
+                </span>
+            </div>
+            <a mat-flat-button color="primary" [routerLink]="project.link">
+                View Project
+            </a>
+        </div>
+        <div class="project-image">
+            <img [src]="project.image" [alt]="project.title" />
+        </div>
+    </div>
+</div>

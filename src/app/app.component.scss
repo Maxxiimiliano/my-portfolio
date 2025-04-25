@@ -1,0 +1,13 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+
+button {
+    color: white;
+}
