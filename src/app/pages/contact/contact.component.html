@@ -2,29 +2,28 @@
     <h2>Contact Me</h2>
     <p>If you'd like to collaborate, feel free to reach out!</p>
 
-    <form class="contact-form" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" novalidate action="https://formspree.io/f/mjkwkkgn"
-  method="POST">
-        <input type="text" name="name" placeholder="Your Name" required ngModel #name="ngModel">
-        <div class="error" *ngIf="name.invalid && name.touched">Name is required</div>
-
-        <input type="email" name="email" placeholder="Your Email" required ngModel email #email="ngModel">
-        <div class="error" *ngIf="email.invalid && email.touched">Valid email is required</div>
-
+    <form class="contact-form" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" novalidate>
+        <input type="text" name="name" placeholder="Your Name" required ngModel #name="ngModel" />
+        <input type="email" name="email" placeholder="Your Email" required email ngModel #email="ngModel" />
         <textarea name="message" placeholder="Your Message" rows="5" required ngModel #message="ngModel"></textarea>
-        <div class="error" *ngIf="message.invalid && message.touched">Message is required</div>
-
         <button type="submit">Send Message</button>
-
     </form>
-
-    <div class="contact-links">
-        <a href="mailto:marmurillorobla@gmail.com"><i class="fas fa-envelope"></i> marmurillorobla&#64;gmail.com</a>
-        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
 
     <div class="toast" [ngClass]="{ show: showToast, error: formError, success: formSuccess }">
         {{ formError ? 'Please fill out all fields correctly.' : 'Message sent successfully!' }}
     </div>
 
+    <!-- Contact Links Section -->
+    <div class="contact-links">
+        <a href="mailto:marmurillorobla@gmail.com"><i class="fas fa-envelope"></i> marmurillorobla&#64;gmail.com</a>
+        <a href="https://github.com/Maxxiimiliano" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://linkedin.com/in/mar-murillo-robla" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+
+    <!-- CV Download Button -->
+    <div class="cv-download">
+        <a href="/my-cv.pdf" download="MarMurillo-CV">
+            <button class="cv-button">Download My CV</button>
+        </a>
+    </div>
 </div>

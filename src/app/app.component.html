@@ -1,10 +1,41 @@
 <mat-toolbar color="primary">
   <span>My Portfolio</span>
+
+  <!-- Custom toggle switch with moon/sun icon -->
+  <div class="theme-toggle-container">
+    <label class="switch">
+      <input type="checkbox" [checked]="themeService.currentTheme === 'dark-theme'" (change)="toggleTheme()">
+      <span class="slider round">
+        <mat-icon [ngClass]="themeService.currentTheme === 'dark-theme' ? 'moon-icon' : 'sun-icon'">
+          {{ themeService.currentTheme === 'dark-theme' ? 'nightlight_round' : 'wb_sunny' }}
+        </mat-icon>
+      </span>
+    </label>
+  </div>
+
+  <!-- Spacer to push content to the right -->
   <span class="spacer"></span>
-  <button mat-button routerLink="/">Home</button>
-  <button mat-button routerLink="/about">About</button>
-  <button mat-button routerLink="/projects">Projects</button>
-  <button mat-button routerLink="/contact">Contact</button>
+
+  <!-- Hamburger icon (only shown on mobile) -->
+  <mat-icon *ngIf="isMobile" (click)="toggleMenu()" class="hamburger-icon" style="margin-left: 1rem;">menu</mat-icon>
+
+  <!-- Navigation buttons (shown on larger screens) -->
+  <div *ngIf="!isMobile" class="nav-buttons">
+    <button mat-button routerLink="/">Home</button>
+    <button mat-button routerLink="/about">About</button>
+    <button mat-button routerLink="/projects">Projects</button>
+    <button mat-button routerLink="/contact">Contact</button>
+  </div>
+
+  <!-- Mobile Menu (hamburger menu for small screens) -->
+  <div *ngIf="menuOpen" class="mobile-menu" [ngClass]="menuOpen ? 'open' : 'closed'">
+    <!-- Menu buttons inside the mobile menu -->
+    <button mat-button routerLink="/" (click)="closeMenu()">Home</button>
+    <button mat-button routerLink="/about" (click)="closeMenu()">About</button>
+    <button mat-button routerLink="/projects" (click)="closeMenu()">Projects</button>
+    <button mat-button routerLink="/contact" (click)="closeMenu()">Contact</button>
+  </div>
 </mat-toolbar>
 
+<!-- Router outlet for content -->
 <router-outlet></router-outlet>
