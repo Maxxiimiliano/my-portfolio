@@ -1,2 +1,38 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@use 'themes' as *;
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    /* Primary color from the theme */
+    color: var(--text-color);
+    /* Text color from the theme */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: var(--hover-color);
+        /* Secondary color from the theme */
+    }
+}
+
+
+/* Add extra margin between the toggle and the navbar items */
+mat-toolbar .spacer {
+    flex-grow: 1;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+}

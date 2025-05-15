@@ -1,24 +1,49 @@
 <div class="projects-container" @fadeIn>
     <h1 class="projects-title">My Projects</h1>
-    <div class="project-card" *ngFor="let project of projects">
-        <div class="project-info">
-            <h2>{{ project.title }}</h2>
-            <p class="description">{{ project.description }}</p>
-            <p class="time-role">
-                <strong>Time Spent:</strong> {{ project.timeSpent }}<br />
-                <strong>Role:</strong> {{ project.role }}
-            </p>
-            <div class="tech-stack">
-                <span *ngFor="let tech of project.technologies" class="tech-chip">
-                    {{ tech }}
-                </span>
+
+    <div class="project-card" *ngFor="let project of projects; let i = index">
+        <div class="project-main">
+            <div class="project-info">
+                <h2>{{ project.title }}</h2>
+                <p class="description">{{ project.description }}</p>
+                <p class="time-role">
+                    <a>Time Spent:</a> {{ project.timeSpent }}<br />
+                    <a>Role:</a> {{ project.role }}
+                </p>
+
+                <div class="tech-stack">
+                    <span *ngFor="let tech of project.technologies" class="tech-chip">
+                        {{ tech }}
+                    </span>
+                </div>
+
+                <button class="more-info-button" (click)="toggleExpanded(i)">
+                    {{ project.expanded ? 'Show Less' : 'Show More' }}
+                </button>
             </div>
-            <a mat-flat-button color="primary" [routerLink]="project.link">
-                View Project
-            </a>
+
+            <div class="project-image">
+                <img [src]="project.image" [alt]="project.title" (click)="openLightbox(project.image)"
+                    style="cursor: zoom-in;" />
+            </div>
         </div>
-        <div class="project-image">
-            <img [src]="project.image" [alt]="project.title" />
+
+        <div class="expanded-content" [class.collapsed]="!project.expanded">
+            <h3>Feature Highlights</h3>
+            <ul>
+                <li *ngFor="let feature of project.features">{{ feature }}</li>
+            </ul>
+
+            <h3>Screenshots</h3>
+            <div class="screenshots">
+                <div *ngFor="let screenshot of project.screenshots" class="screenshot">
+                    <img [src]="screenshot" [alt]="project.title" (click)="openLightbox(screenshot)"
+                        style="cursor: zoom-in;" />
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Lightbox -->
+    <app-lightbox [imageUrl]="selectedImage" [visible]="lightboxVisible" (close)="closeLightbox()"></app-lightbox>
 </div>

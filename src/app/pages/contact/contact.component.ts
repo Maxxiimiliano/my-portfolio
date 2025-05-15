@@ -3,14 +3,14 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { fadeIn } from '../../animations/fade-in.animation';
-import { HttpClientModule } from '@angular/common/http';
+import emailjs from 'emailjs-com';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
+  styleUrls: ['./contact.component.scss'],
   animations: [fadeIn],
 })
 export class ContactComponent {
@@ -18,9 +18,11 @@ export class ContactComponent {
   formError = false;
   showToast = false;
 
+  // This method is called when the form is submitted
   onSubmit(form: NgForm) {
     if (form.valid) {
-      console.log('Form Data:', form.value);
+      const formData = form.value;
+      this.sendEmail(formData);
       this.formSuccess = true;
       this.formError = false;
       this.triggerToast();
@@ -32,6 +34,33 @@ export class ContactComponent {
     }
   }
 
+  // This method sends an email via EmailJS
+  private sendEmail(formData: any) {
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+    };
+
+    // Replace 'your_service_id', 'your_template_id', and 'your_user_id' with actual values from EmailJS
+    emailjs
+      .send(
+        'service_x4n1weu',
+        'template_13xxq9m',
+        templateParams,
+        '4AKPcqJnpkc6QD-ys'
+      )
+      .then(
+        (response) => {
+          console.log('Email sent successfully:', response);
+        },
+        (error) => {
+          console.log('Email sending failed:', error);
+        }
+      );
+  }
+
+  // This method triggers the toast message
   private triggerToast() {
     this.showToast = true;
     setTimeout(() => {

@@ -7,22 +7,26 @@
         font-size: 2.5rem;
         margin-bottom: 2rem;
         text-align: center;
+        color: var(--title-color)
     }
 
     .project-card {
-        display: flex;
-        background-color: #ffffff;
+        background-color: var(--box-color);
         border-radius: 16px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         margin-bottom: 2rem;
-        flex-direction: row;
         transition: transform 0.3s;
-        gap: 2rem;
         padding: 1.5rem;
 
         &:hover {
             transform: translateY(-4px);
+        }
+
+        .project-main {
+            display: flex;
+            gap: 2rem;
+            flex-direction: row;
         }
 
         .project-info {
@@ -34,18 +38,23 @@
             h2 {
                 margin: 0;
                 font-size: 1.8rem;
+                color: var(--title-color)
             }
 
             .description {
                 margin: 1rem 0;
                 font-size: 1rem;
-                color: #555;
+                color: var(--text-color);
             }
 
             .time-role {
                 font-size: 0.95rem;
                 margin-bottom: 1rem;
-                color: #666;
+                color: var(--title-color);
+
+                a {
+                    font-weight: 450;
+                }
             }
 
             .tech-stack {
@@ -53,8 +62,8 @@
 
                 .tech-chip {
                     display: inline-block;
-                    background-color: #eef2ff;
-                    color: #3f51b5;
+                    background-color: var(--badge-color);
+                    color: var(--badgetxt-color);
                     padding: 0.3rem 0.7rem;
                     border-radius: 999px;
                     font-size: 0.8rem;
@@ -63,21 +72,93 @@
                 }
             }
 
-            a {
+            .more-info-button {
+                margin-top: 1.5rem;
                 align-self: flex-start;
+                padding: 0.45rem 1.2rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+                background-color: var(--badge-color);
+                color: var(--badgetxt-color);
+                border: 1px solid #cbd5e0;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+                &:hover {
+                    background-color: #e2e8f0;
+                    border-color: #a0aec0;
+                    color: #2c3e9f;
+                }
             }
         }
 
         .project-image {
             flex: 0 0 250px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
 
             img {
+                max-height: 100%;
                 max-width: 100%;
-                height: auto;
+                object-fit: contain;
                 border-radius: 12px;
+            }
+        }
+
+        .expanded-content {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+
+            // Animation setup
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.3s ease;
+            max-height: 1000px;
+            opacity: 1;
+            pointer-events: auto;
+
+            &.collapsed {
+                max-height: 0;
+                opacity: 0;
+                padding-top: 0;
+                margin-top: 0;
+                pointer-events: none;
+            }
+
+            h3 {
+                margin-top: 1rem;
+                font-size: 1.2rem;
+                font-weight: 450;
+                color: var(--title-color)
+            }
+
+            ul {
+                padding-left: 1.2rem;
+                margin-bottom: 1.2rem;
+
+                li {
+                    margin-bottom: 0.5rem;
+                }
+            }
+
+            .screenshots {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 1rem;
+
+                .screenshot {
+                    flex: 0 0 calc(50% - 0.5rem);
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                    }
+                }
             }
         }
     }
@@ -85,11 +166,17 @@
     // Responsive
     @media (max-width: 768px) {
         .project-card {
-            flex-direction: column;
+            .project-main {
+                flex-direction: column;
+            }
 
             .project-image {
-                flex: none;
+                height: auto;
                 margin-top: 1rem;
+            }
+
+            .screenshots .screenshot {
+                flex: 0 0 100%;
             }
         }
     }

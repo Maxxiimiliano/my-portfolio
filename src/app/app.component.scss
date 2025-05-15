@@ -1,13 +1,201 @@
-.spacer {
-    flex: 1 1 auto;
-}
-
+/* Custom styles for the toolbar */
 mat-toolbar {
     display: flex;
+    justify-content: space-between;
+    /* Space between the title and the switch */
     align-items: center;
-    padding: 0 16px;
+    padding: 0.5rem 1rem;
+    /* Add some padding */
+    background-color: var(--primary-color);
+    /* Use primary color for the background */
+    color: white;
+    /* Text color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Optional: Add a subtle shadow for depth */
+
+    
 }
 
-button {
+/* Toolbar title styling */
+mat-toolbar span {
+    font-size: 1.5rem;
+    font-weight: 450;
     color: white;
+    /* Text color */
+    margin-right: auto;
+    /* Push the theme toggle to the right */ 
+}
+
+/* Styling for the mobile menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -2rem;
+    /* Initially off-screen */
+    width: 200px;
+    /* Set the width */
+    height: 100%;
+    /* Dark background for the overlay */
+    color: white;
+    padding-top: 3.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 999;
+    transition: right 0.3s ease;
+    /* Smooth transition for opening/closing */
+
+    /* Initially hide buttons */
+    button {
+        margin: 1rem 0;
+        text-align: center;
+        font-size: 1.1rem;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        /* Adjust padding to make the button fit the text */
+        border-radius: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        /* Floating effect for buttons */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        /* Remove unnecessary width */
+        width: 100%;
+        max-width: 100px;
+        /* Set max width to avoid buttons being too wide */
+        align-self: center;
+        /* Center buttons horizontally */
+
+        /* Initially hide the buttons off-screen (above the menu) */
+        opacity: 0;
+        transform: translateY(-50px);
+        /* Position off-screen above */
+        transition: transform 0.5s ease, opacity 0.5s ease;
+
+        /* Apply the animation */
+        &.animate-in {
+            opacity: 1;
+            /* Fade in */
+            transform: translateY(0);
+            /* Slide into final position */
+        }
+    }
+
+    &.closed {
+        right: -250px;
+        /* Menu is off-screen */
+    }
+}
+
+/* Hamburger Icon Styling */
+.hamburger-icon {
+    cursor: pointer;
+    margin-right: 2rem;
+    /* Add margin to the right */
+    z-index: 1001;
+    /* Ensure hamburger icon stays above the menu */
+}
+
+/* Custom styles for the toggle switch */
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 0 1rem;
+    /* Add padding for responsiveness */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 4rem;
+    /* Adjusted width for responsiveness */
+    height: 2rem;
+    /* Reduced height of the switch */
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-color);
+    transition: .4s;
+    border-radius: 30px;
+}
+
+/* The slider's "thumb" (the moving part of the switch) */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4rem;
+    /* Thumb height */
+    width: 1.4rem;
+    /* Thumb width */
+    top: 50%;
+    left: 0.3rem;
+    /* Adjust left margin */
+    transform: translateY(-50%);
+    /* Vertically center the thumb */
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    /* Make the thumb round */
+    transition: transform 0.4s ease, background-color 0.4s ease;
+}
+
+/* When the checkbox is checked (dark theme) */
+input:checked+.slider {
+    background-color: var(--background-color);
+    /* Blue color for dark theme */
+}
+
+/* When the checkbox is focused */
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+/* Move the thumb when checked (dark mode) */
+input:checked+.slider:before {
+    transform: translateX(140%) translateY(-50%);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Aligning the icons inside the slider */
+.slider mat-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--primary-color)
+    /* Use rem for font size to be responsive */
+}
+
+/* Moon icon (dark theme) */
+.moon-icon {
+    left: 0.2rem;
+    /* Reduced left margin for the moon icon */
+}
+
+/* Sun icon (light theme) */
+.sun-icon {
+    right: 0.2rem;
+    /* Reduced right margin for the sun icon */
 }
