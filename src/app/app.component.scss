@@ -26,6 +26,11 @@ mat-toolbar span {
     /* Push the theme toggle to the right */ 
 }
 
+.portfolio-title {
+    text-decoration: none;
+    /* Remove underline from the link */
+}
+
 /* Styling for the mobile menu */
 .mobile-menu {
     position: fixed;

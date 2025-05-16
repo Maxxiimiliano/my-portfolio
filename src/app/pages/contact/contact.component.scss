@@ -24,7 +24,7 @@
 
         input,
         textarea {
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 0;
             background-color: var(--textarea-color);
             border: 1px solid var(--border-color);
             color: var(--title-color);
@@ -33,6 +33,11 @@
             width: 100%;
             resize: none;
         }
+                input::placeholder,
+                textarea::placeholder {
+                    padding-left: 10px;
+                    /* Adjust this value as needed */
+                }
 
                 button {
                     background-color: var(--primary-color);
