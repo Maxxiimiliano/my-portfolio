@@ -19,7 +19,7 @@ export class ProjectsComponent {
     {
       title: 'Portfolio Website',
       description: 'A responsive portfolio built with Angular and SCSS.',
-      technologies: ['Angular', 'SCSS', 'HTML', 'Responsive Design'],
+      technologies: ['Angular', 'SCSS', 'HTML', 'Responsive Design', 'CI/CD'],
       image: '/portfolio1.png',
       timeSpent: '2 weeks',
       role: 'Sole Developer',
