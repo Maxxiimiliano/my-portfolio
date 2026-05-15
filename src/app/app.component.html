@@ -1,27 +1,11 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
   <a routerLink="/" class="portfolio-title">
     <span>My Portfolio</span>
   </a>
 
-  <!-- Custom toggle switch with moon/sun icon -->
-  <div class="theme-toggle-container">
-    <label class="switch">
-      <input type="checkbox" [checked]="themeService.currentTheme === 'dark-theme'" (change)="toggleTheme()">
-      <span class="slider round">
-        <mat-icon [ngClass]="themeService.currentTheme === 'dark-theme' ? 'moon-icon' : 'sun-icon'">
-          {{ themeService.currentTheme === 'dark-theme' ? 'nightlight_round' : 'wb_sunny' }}
-        </mat-icon>
-      </span>
-    </label>
-  </div>
-
-  <!-- Spacer to push content to the right -->
   <span class="spacer"></span>
 
-  <!-- Hamburger icon (only shown on mobile) -->
-  <mat-icon *ngIf="isMobile" (click)="toggleMenu()" class="hamburger-icon" style="margin-left: 1rem;">menu</mat-icon>
-
-  <!-- Navigation buttons (shown on larger screens) -->
+  <!-- Nav links (desktop) -->
   <div *ngIf="!isMobile" class="nav-buttons">
     <button mat-button routerLink="/">Home</button>
     <button mat-button routerLink="/about">About</button>
@@ -29,9 +13,16 @@
     <button mat-button routerLink="/contact">Contact</button>
   </div>
 
-  <!-- Mobile Menu (hamburger menu for small screens) -->
+  <!-- Theme toggle -->
+  <button class="theme-btn" (click)="toggleTheme()" [title]="themeService.currentTheme === 'dark-theme' ? 'Switch to light mode' : 'Switch to dark mode'">
+    <i class="fas" [ngClass]="themeService.currentTheme === 'dark-theme' ? 'fa-sun' : 'fa-moon'"></i>
+  </button>
+
+  <!-- Hamburger (mobile) -->
+  <mat-icon *ngIf="isMobile" (click)="toggleMenu()" class="hamburger-icon">menu</mat-icon>
+
+  <!-- Mobile menu -->
   <div *ngIf="menuOpen" class="mobile-menu" [ngClass]="menuOpen ? 'open' : 'closed'">
-    <!-- Menu buttons inside the mobile menu -->
     <button mat-button routerLink="/" (click)="closeMenu()">Home</button>
     <button mat-button routerLink="/about" (click)="closeMenu()">About</button>
     <button mat-button routerLink="/projects" (click)="closeMenu()">Projects</button>
@@ -39,5 +30,4 @@
   </div>
 </mat-toolbar>
 
-<!-- Router outlet for content -->
 <router-outlet></router-outlet>

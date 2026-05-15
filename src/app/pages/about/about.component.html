@@ -1,66 +1,109 @@
-<!-- About Me Section (Inside Blue Container) -->
-<div class="about" @fadeIn>
-        
-    <img class="about-photo" src="profile-photo2.png" alt="Your photo" />
-    <div class="about-content">
-        <h2>About Me</h2>
-        <p>I'm a full-stack developer with experience in building modern web applications using technologies like TypeScript,
-            Angular, React, and more. I enjoy learning new tools and solving challenges in both front-end and back-end
-            development.</p>
-        </div>
-</div>
+<div class="about-page" @fadeIn>
 
-<!-- Skills Section (Outside Blue Container) -->
-<div class="skills-section">
-    <h3>My Skills</h3>
-    <div class="skills">
-        <div class="skill">
-            <i class="fa-brands fa-html5"></i> HTML
+    <!-- Hero with the same gradient wallpaper as home -->
+    <section class="about-hero">
+        <img class="hero-photo" src="profile-photo2.png" alt="Mar Murillo" />
+        <div class="hero-text">
+            <h1>Mar Murillo</h1>
+            <p class="hero-subtitle">Full-Stack Developer</p>
+            <p class="hero-bio">
+                Finishing Higher Professional Training in Multiplatform App Development (DAM).
+                I build modern web applications with TypeScript, Angular, React, and Next.js,
+                and work with automation tools like n8n.
+            </p>
         </div>
-        <div class="skill">
-            <i class="fa-brands fa-css3-alt"></i> CSS
+    </section>
+
+    <div class="page-body">
+
+        <!-- Two-column: Experience + Skills -->
+        <div class="mid-grid">
+
+            <section class="exp-section">
+                <h2 class="section-label">Experience</h2>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div class="exp-title-group">
+                            <h3>Automation &amp; Development Intern</h3>
+                            <span class="exp-company">Studio11</span>
+                        </div>
+                        <span class="exp-date">2026</span>
+                    </div>
+                    <p>Task and message automation using n8n workflows. Backend development with C#. Design and integration of automated pipelines for business processes.</p>
+                    <div class="exp-tags">
+                        <span>n8n</span>
+                        <span>C#</span>
+                        <span>Automation</span>
+                        <span>REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div class="exp-title-group">
+                            <h3>Freelance Full-Stack Engineer</h3>
+                            <span class="exp-company">Wallapop Offer Finder</span>
+                        </div>
+                        <span class="exp-date">2023 – Present</span>
+                    </div>
+                    <p>Sole developer of a full-stack web application built with Next.js, React, and TypeScript. The platform sends real-time price alerts when tracked Wallapop listings drop below a set threshold. Responsible for the full development cycle, from front-end to back-end API integration.</p>
+                    <div class="exp-tags">
+                        <span>Next.js</span>
+                        <span>React</span>
+                        <span>TypeScript</span>
+                        <span>PostgreSQL</span>
+                        <span>API Integration</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="skills-section">
+                <h2 class="section-label">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill"><i class="fa-brands fa-html5"></i><span>HTML</span></div>
+                    <div class="skill"><i class="fa-brands fa-css3-alt"></i><span>CSS</span></div>
+                    <div class="skill"><i class="fa-brands fa-js-square"></i><span>JavaScript</span></div>
+                    <div class="skill"><i class="fa-brands fa-react"></i><span>React</span></div>
+                    <div class="skill"><i class="fa-brands fa-angular"></i><span>Angular</span></div>
+                    <div class="skill"><i class="fa-brands fa-node"></i><span>Node.js</span></div>
+                    <div class="skill"><i class="fa-brands fa-js-square"></i><span>TypeScript</span></div>
+                    <div class="skill"><i class="fa-brands fa-js-square"></i><span>Next.js</span></div>
+                    <div class="skill"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
+                    <div class="skill"><i class="fas fa-code"></i><span>C#</span></div>
+                    <div class="skill"><i class="fas fa-robot"></i><span>n8n</span></div>
+                    <div class="skill"><i class="fas fa-plug"></i><span>REST APIs</span></div>
+                    <div class="skill"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                </div>
+            </section>
+
         </div>
-        <div class="skill">
-            <i class="fa-brands fa-js-square"></i> JavaScript
-        </div>
-        <div class="skill">
-            <i class="fa-brands fa-node"></i> Node.js
-        </div>
-        <div class="skill">
-            <i class="fa-brands fa-react"></i> React
-        </div>
-        <div class="skill">
-            <i class="fa-brands fa-angular"></i> Angular
-        </div>
-        <div class="skill">
-            <i class="fa-brands fa-js-square"></i> TypeScript
-        </div>
-        <div class="skill">
-            <i class="fa-brands fa-js-square"></i> Next.js
-        </div>
-        <div class="skill">
-            <i class="fas fa-plug"></i> API
-        </div>
+
+        <!-- Studies & Certifications — full-width card grid -->
+        <section class="studies-section">
+            <h2 class="section-label">Studies &amp; Certifications</h2>
+            <div class="studies-grid">
+                <div class="study-card">
+                    <div class="study-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Higher Professional Training</h3>
+                    <p class="study-field">Multiplatform App Development</p>
+                    <p class="study-place">CEAC · 2024 – 2026</p>
+                </div>
+                <div class="study-card">
+                    <div class="study-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Intermediate Professional Training</h3>
+                    <p class="study-field">Microcomputer Systems and Networks</p>
+                    <p class="study-place">OBICEX · 2022 – 2024</p>
+                </div>
+                <div class="study-card">
+                    <div class="study-icon"><i class="fas fa-language"></i></div>
+                    <h3>English B2 Certification</h3>
+                    <p class="study-field">Cambridge University · May 2022</p>
+                    <p class="study-place">ID: B8403418</p>
+                </div>
+            </div>
+        </section>
+
     </div>
 </div>
-
-<section class="studies-certifications">
-    <div class="studies-certifications-content">
-        <h3>Studies & Certifications</h3>
-        <div class="studies">
-            <div class="study">
-                <h3>Higher Professional Training - Multiplatform App Development</h3>
-                <p>CEAC  2024 - 2026</p>
-            </div>
-            <div class="study">
-                <h3>Intermediate Professional Training - Microcomputer Systems and Networks</h3>
-                <p>OBICEX  2022 - 2024</p>
-            </div>
-            <div class="certification">
-                <h3>English B2 Certification</h3>
-                <p>Cambridge University - May 2022 | ID: B8403418</p>
-            </div>
-            
-        </div>
-    </div>
-</section>

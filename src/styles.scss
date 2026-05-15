@@ -5,15 +5,31 @@ body {
     height: 100%;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: var(--background-color);
     color: var(--text-color);
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+body.dark-theme {
+    background:
+        radial-gradient(ellipse at 75% -5%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 10% 80%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+        var(--background-color);
+    background-attachment: fixed;
+}
+
+body.light-theme {
+    background:
+        radial-gradient(ellipse at 75% -5%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        var(--background-color);
+    background-attachment: fixed;
 }
 
 button {
     background-color: var(--primary-color);
-    /* Primary color from the theme */
     color: var(--text-color);
-    /* Text color from the theme */
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -22,12 +38,9 @@ button {
 
     &:hover {
         background-color: var(--hover-color);
-        /* Secondary color from the theme */
     }
 }
 
-
-/* Add extra margin between the toggle and the navbar items */
 mat-toolbar .spacer {
     flex-grow: 1;
 }

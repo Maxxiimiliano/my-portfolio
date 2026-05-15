@@ -1,49 +1,93 @@
-<div class="projects-container" @fadeIn>
-    <h1 class="projects-title">My Projects</h1>
+<div class="projects-page" @fadeIn>
 
-    <div class="project-card" *ngFor="let project of projects; let i = index">
-        <div class="project-main">
-            <div class="project-info">
-                <h2>{{ project.title }}</h2>
-                <p class="description">{{ project.description }}</p>
-                <p class="time-role">
-                    <a>Time Spent:</a> {{ project.timeSpent }}<br />
-                    <a>Role:</a> {{ project.role }}
-                </p>
+    <header class="page-header">
+        <h1>My Projects</h1>
+        <p>A selection of recent work</p>
+    </header>
 
-                <div class="tech-stack">
-                    <span *ngFor="let tech of project.technologies" class="tech-chip">
-                        {{ tech }}
-                    </span>
-                </div>
-
-                <button class="more-info-button" (click)="toggleExpanded(i)">
-                    {{ project.expanded ? 'Show Less' : 'Show More' }}
-                </button>
-            </div>
-
-            <div class="project-image">
-                <img [src]="project.image" [alt]="project.title" (click)="openLightbox(project.image)"
-                    style="cursor: zoom-in;" />
-            </div>
-        </div>
-
-        <div class="expanded-content" [class.collapsed]="!project.expanded">
-            <h3>Feature Highlights</h3>
-            <ul>
-                <li *ngFor="let feature of project.features">{{ feature }}</li>
-            </ul>
-
-            <h3>Screenshots</h3>
-            <div class="screenshots">
-                <div *ngFor="let screenshot of project.screenshots" class="screenshot">
-                    <img [src]="screenshot" [alt]="project.title" (click)="openLightbox(screenshot)"
-                        style="cursor: zoom-in;" />
-                </div>
-            </div>
-        </div>
+    <!-- Mobile project tabs (hidden on desktop) -->
+    <div class="mobile-tabs">
+        <button *ngFor="let p of projects; let i = index"
+                [class.active]="i === selectedProjectIndex"
+                (click)="selectProject(i)">
+            {{ p.title }}
+        </button>
     </div>
 
-    <!-- Lightbox -->
+    <div class="showcase">
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <button class="sidebar-item"
+                    *ngFor="let p of projects; let i = index"
+                    [class.active]="i === selectedProjectIndex"
+                    (click)="selectProject(i)">
+                <span class="item-num">{{ (i + 1).toString().padStart(2, '0') }}</span>
+                <span class="item-body">
+                    <span class="item-title">{{ p.title }}</span>
+                    <span class="item-role">{{ p.role }}</span>
+                </span>
+                <span class="item-dot"></span>
+            </button>
+        </nav>
+
+        <!-- Main detail panel -->
+        <section class="detail">
+
+            <!-- Image carousel -->
+            <div class="image-panel" (click)="openLightbox(activeImages[activeSlide])">
+                <ng-container *ngFor="let img of activeImages; let si = index">
+                    <img [src]="img" [alt]="active.title" [class.active]="si === activeSlide" />
+                </ng-container>
+
+                <div class="panel-dots" *ngIf="activeImages.length > 1" (click)="$event.stopPropagation()">
+                    <span *ngFor="let img of activeImages; let si = index"
+                          class="dot" [class.active]="si === activeSlide"
+                          (click)="goToSlide(si, $event)"></span>
+                </div>
+
+                <span class="zoom-hint"><i class="fas fa-expand-alt"></i></span>
+            </div>
+
+            <!-- Info -->
+            <div class="info">
+                <div class="info-top">
+                    <div class="info-title-block">
+                        <h2>{{ active.title }}</h2>
+                        <div class="info-meta">
+                            <span><i class="fas fa-clock"></i> {{ active.timeSpent }}</span>
+                            <span class="dot-sep">·</span>
+                            <span>{{ active.role }}</span>
+                        </div>
+                    </div>
+                    <div class="info-actions">
+                        <a *ngIf="active.liveUrl" [href]="active.liveUrl"
+                           target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a *ngIf="active.github" [href]="active.github"
+                           target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <p class="description">{{ active.description }}</p>
+
+                <div class="tech-list">
+                    <span class="chip" *ngFor="let t of active.technologies">{{ t }}</span>
+                </div>
+
+                <div class="features">
+                    <p class="features-label">Features</p>
+                    <ul>
+                        <li *ngFor="let f of active.features">{{ f }}</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
     <app-lightbox [imageUrl]="selectedImage" [visible]="lightboxVisible" (close)="closeLightbox()"></app-lightbox>
 </div>

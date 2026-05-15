@@ -8,7 +8,7 @@ export class ThemeService {
 
   constructor() {
     // Get the theme from localStorage or default to 'light-theme'
-    this.theme = localStorage.getItem('theme') || 'light-theme';
+    this.theme = localStorage.getItem('theme') || 'dark-theme';
     this.applyTheme(this.theme); // Apply the theme when the app starts
   }
 

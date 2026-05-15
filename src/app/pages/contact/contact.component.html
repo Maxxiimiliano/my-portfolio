@@ -1,29 +1,43 @@
-<div class="contact" @fadeIn>
-    <h2>Contact Me</h2>
-    <p>If you'd like to collaborate, feel free to reach out!</p>
+<div class="contact-page" @fadeIn>
 
-    <form class="contact-form" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" novalidate>
-        <input type="text" name="name" placeholder="Your Name" required ngModel #name="ngModel" />
-        <input type="email" name="email" placeholder="Your Email" required email ngModel #email="ngModel" />
-        <textarea name="message" placeholder="Your Message" rows="5" required ngModel #message="ngModel"></textarea>
-        <button type="submit">Send Message</button>
-    </form>
+    <header class="contact-hero">
+        <h2>Contact Me</h2>
+        <p>If you'd like to collaborate, feel free to reach out!</p>
+    </header>
+
+    <div class="contact-body">
+
+        <form class="contact-form" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" novalidate>
+            <input type="text" name="name" placeholder="Your Name" required ngModel #name="ngModel" />
+            <input type="email" name="email" placeholder="Your Email" required email ngModel #email="ngModel" />
+            <textarea name="message" placeholder="Your Message" rows="5" required ngModel #message="ngModel"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="contact-links">
+            <a href="mailto:marmurillorobla@gmail.com">
+                <i class="fas fa-envelope"></i> marmurillorobla&#64;gmail.com
+            </a>
+            <a href="https://github.com/Maxxiimiliano" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://linkedin.com/in/mar-murillo-robla" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </div>
+
+        <div class="cv-download">
+            <a href="CV - Mar Murillo.pdf" download="CV - Mar Murillo">
+                <button class="cv-button">
+                    <i class="fas fa-download"></i> Download My CV
+                </button>
+            </a>
+        </div>
+
+    </div>
 
     <div class="toast" [ngClass]="{ show: showToast, error: formError, success: formSuccess }">
         {{ formError ? 'Please fill out all fields correctly.' : 'Message sent successfully!' }}
     </div>
 
-    <!-- Contact Links Section -->
-    <div class="contact-links">
-        <a href="mailto:marmurillorobla@gmail.com"><i class="fas fa-envelope"></i> marmurillorobla&#64;gmail.com</a>
-        <a href="https://github.com/Maxxiimiliano" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/mar-murillo-robla" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
-
-    <!-- CV Download Button -->
-    <div class="cv-download">
-        <a href="CV-MarMurillo.pdf" download="MarMurillo-CV">
-            <button class="cv-button">Download My CV</button>
-        </a>
-    </div>
 </div>
